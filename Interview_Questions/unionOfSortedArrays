@@ -1,0 +1,39 @@
+/*
+Problem: Union of Two Sorted Arrays
+
+Given two sorted arrays of size n and m respectively, find their union. The Union of two arrays can be defined as
+the common and distinct elements in the two arrays. Return the elements in sorted order.
+
+Solution:
+*/
+class Solution
+{
+    //Function to return a list containing the union of the two arrays.
+    public static ArrayList<Integer> findUnion(int arr1[], int arr2[], int n, int m)
+    {
+        // add your code here
+        ArrayList<Integer> res = new ArrayList<>();
+        int i = 0 , j = 0 , prev = -1;
+        while(i<n || j<m){
+            int x = i==n ? Integer.MAX_VALUE : arr1[i];
+            int y = j==m ? Integer.MAX_VALUE : arr2[j];
+            int curr;
+            if(x < y){
+                i++;
+                curr = x;
+            }
+            else{
+                j++;
+                curr = y;
+            }
+            if(curr == prev){
+                continue;
+            }
+            prev = curr;
+            //System.out.println("i = " + i + "   j = " + j);
+            res.add(curr);
+        }
+        //System.out.println("i = " + i + "   j = " + j);
+        return res;
+    }
+}
