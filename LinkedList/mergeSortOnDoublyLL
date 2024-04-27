@@ -1,0 +1,56 @@
+/*
+Problem: Merge sort on Doubly Linked List
+Given Pointer/Reference to the head of a doubly linked list of n nodes, the task is to Sort the given doubly linked list
+using Merge Sort in both non-decreasing and non-increasing order.
+
+Solution:
+*/
+class Solution {
+    // Function to sort the given doubly linked list using Merge Sort.
+    static Node sortDoubly(Node head) {
+        // add your code here
+        // add your code here
+        if(head==null || head.next==null){
+            return head;
+        }
+        
+        Node head2 = partition(head);
+        head = sortDoubly(head);
+        head2 = sortDoubly(head2);
+        
+        return merge(head,head2);
+    }
+    
+    static Node partition(Node node){
+        Node slow = node,fast = node;
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        Node newHead = slow.next;
+        slow.next = null;
+        newHead.prev = null;
+        return newHead;
+    }
+    
+    static Node merge(Node head1,Node head2){
+        if(head1==null)
+           return head2;
+        if(head2==null)
+           return head1;
+        
+        if(head1.data<head2.data){
+            head1.next = merge(head1.next,head2);
+            head1.next.prev = head1;
+            head1.prev = null;
+            return head1;
+        }
+        else{
+            head2.next = merge(head1,head2.next);
+            head2.next.prev = head2;
+            head2.prev = null;
+            return head2;
+        }
+    }
+}
