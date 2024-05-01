@@ -1,0 +1,37 @@
+class Solution {
+    
+    public Node arrangeCV(Node head){
+        Node vowelList = null , consList = null;
+        Node tail1 = null , tail2 = null;
+        Node curr = head;
+        while(curr != null){
+            char ch = curr.data;
+            if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u'){
+                if(tail1 == null){
+                    vowelList = tail1 = curr;
+                }
+                else{
+                    tail1.next = curr;
+                    tail1 = curr;
+                }
+            }
+            else{
+                if(tail2 == null){
+                    consList = tail2 = curr;
+                }
+                else{
+                    tail2.next = curr;
+                    tail2 = curr;
+                }
+            }
+            
+            curr = curr.next;
+        }
+        
+        if(tail1 != null)   tail1.next = consList;
+        if(tail2 != null)   tail2.next = null;
+        if(vowelList == null)   return consList;
+        return vowelList;
+    }
+    
+}
