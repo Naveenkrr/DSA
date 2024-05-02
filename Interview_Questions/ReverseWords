@@ -1,0 +1,27 @@
+/* 
+
+Problem : Reverse words in sentence.
+Input:
+S = i.like.this.program.very.much
+Output: much.very.program.this.like.i
+
+*/
+
+string reverseWords(string S) 
+    { 
+        // code here 
+        string res = "";
+        string curr = "";
+        for(int i=0; i<S.length(); i++){
+            if(S[i]=='.'){
+                res = curr + res;
+                res = '.' + res;
+                curr = "";
+            }
+            else{
+                curr = curr + S[i];
+            }
+        }
+        res = curr + res;
+        return res;
+    } 
