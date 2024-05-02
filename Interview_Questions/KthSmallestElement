@@ -1,0 +1,14 @@
+public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+        //Your code here
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for(int i=l; i<=r; i++){
+            minHeap.offer(arr[i]);
+        }
+        int count = 0;
+        while(count+1 < k){
+            minHeap.poll();
+            count++;
+        }
+        return minHeap.peek();
+    } 
