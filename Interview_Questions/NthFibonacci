@@ -1,0 +1,22 @@
+class Solution {
+    static long nthFibonacci(long n){
+        // code here
+        if(n==1)
+          return 0;
+        else if(n==2)
+          return 1;
+        else{
+            return nthFib(n-2,0,1);
+        }
+    }
+    
+    static long nthFib(long n,long a,long b){
+        if(n==0)
+          return (a+b)%(1000000007);
+        
+        long x = (a+b)%(1000000007);
+        a = b;
+        b = x;
+        return nthFib(n-1,a,b);
+    }
+}
