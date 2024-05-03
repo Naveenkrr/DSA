@@ -1,0 +1,21 @@
+ArrayList<Integer> Kdistance(Node root, int k)
+     {
+          ArrayList<Integer> res = new ArrayList<>();
+          int level = -1;
+          Queue<Node> q = new LinkedList<>();
+          q.add(root);
+          while(level < k && q.size() > 0){
+              int size = q.size();
+              while(size-- > 0){
+                  Node curr = q.poll();
+                  if(curr.left != null)
+                    q.add(curr.left);
+                  if(curr.right != null)
+                    q.add(curr.right);
+                  if(level + 1 ==  k)
+                    res.add(curr.data);
+              }
+              level++;
+          }
+          return res;
+     }
