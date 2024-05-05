@@ -1,0 +1,34 @@
+/*
+In Java, the toString() method is used to return a string representation of an object. 
+It is defined in the Object class, so every class in Java inherits this method. However,
+you can override the toString() method in your own classes to provide a more meaningful 
+string representation of objects of that class.
+
+/*
+
+
+
+class Student {
+    private String name;
+    private int marks;
+
+    public Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", marks=" + marks +
+                '}';
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student student = new Student("Alice", 85);
+        System.out.println(student.toString()); // Output: Student{name='Alice', marks=85}
+    }
+}
